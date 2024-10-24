@@ -12,286 +12,33 @@ import plotly.express as px
 def da(a1,a2):
     return(a1==12 and a2==12 or a1==16 and a2==16 or a1==20 and a2==20)
 
-def SHOT_SIM(A_Shooter1,S_Shooter1,
-             A_Shooter2,S_Shooter2,
-             A_Shooter3,S_Shooter3,
-             A_Shooter4,S_Shooter4,
-             A_Shooter5,S_Shooter5,
-             A_Shooter6,S_Shooter6,
-             A_Shooter7,S_Shooter7,
-             A_Shooter8,S_Shooter8,
-             A_Shooter9,S_Shooter9,
-             A_Shooter10,S_Shooter10,
+def SHOT_SIM(Dice,
              Shields,Defense):
     winner=0  #No winner to start
-    num_b_mis1=S_Shooter1
-    num_b_mis2=S_Shooter2
-    num_b_mis3=S_Shooter3
-    num_b_mis4=S_Shooter4
-    num_b_mis5=S_Shooter5
-    num_b_mis6=S_Shooter6
-    num_b_mis7=S_Shooter7
-    num_b_mis8=S_Shooter8
-    num_b_mis9=S_Shooter9
-    num_b_mis10=S_Shooter10
+    shots=Dice.copy()
     shields=Shields.copy()
-    defense=Defense.copy()
+    steps=Defense.copy()
     while winner==0: #keep going to Red or Blue wins
-        if num_b_mis1>0:
-            B_shoot1=random.randint(1, A_Shooter1)  #shooter shot value of it has shots remaining
-            num_b_mis1-=1  #number of shots decreases by 1
-            if shields:
-                if B_shoot1>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                    shields.pop(0)
-            else:  #if red is out of shiels, the shot goes agains the defense value
-                if defense:
-                    if B_shoot1>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                        defense.pop(0)
-                    if not defense:
-                        winner+=1
-                        return("Shooter 1 destroyed Red", len(shields),len(defense))
-            if da(A_Shooter1,B_shoot1):
+        for i in range(len(shots)):
+            if shots:
                 if shields:
-                    if B_shoot1>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                        shields.pop(0)
-                    else:  #if red is out of shiels, the shot goes agains the defense value
-                        if defense:
-                            if B_shoot1>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                                defense.pop(0)
-                        else:
-                            winner+=1
-                            return("Shooter 1 destroyed Red", len(shields),len(defense))
-                    
-        elif num_b_mis2>0: #if the previous shooter runs out of shots, the next shooter start shooting
-            B_shoot2=random.randint(1, A_Shooter2)  
-            num_b_mis2-=1 
-            if shields:
-                if B_shoot2>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                    shields.pop(0)
-            else:  #if red is out of shiels, the shot goes agains the defense value
-                if defense:
-                    if B_shoot2>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                        defense.pop(0)
-                    if not defense:
-                        winner+=1
-                        return("Shooter 2 destroyed Red", len(shields),len(defense))
-            if da(A_Shooter2,B_shoot2):
-                if shields:
-                    if B_shoot2>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                        shields.pop(0)
-                    else:  #if red is out of shiels, the shot goes agains the defense value
-                        if defense:
-                            if B_shoot2>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                                defense.pop(0)
-                        else:
-                            winner+=1
-                            return("Shooter 2 destroyed Red", len(shields),len(defense))
-                    
-        elif num_b_mis3>0:
-            B_shoot3=random.randint(1, A_Shooter3) 
-            num_b_mis3-=1  
-            if shields:
-                if B_shoot3>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                    shields.pop(0)
-            else:  #if red is out of shiels, the shot goes agains the defense value
-                if defense:
-                    if B_shoot3>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                        defense.pop(0)
-                    if not defense:
-                        winner+=1
-                        return("Shooter 3 destroyed Red", len(shields),len(defense))
-            if da(A_Shooter3,B_shoot3):
-                if shields:
-                    if B_shoot3>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                        shields.pop(0)
-                    else:  #if red is out of shiels, the shot goes agains the defense value
-                        if defense:
-                            if B_shoot3>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                                defense.pop(0)
-                        else:
-                            winner+=1
-                            return("Shooter 3 destroyed Red", len(shields),len(defense))
-
-
-        elif num_b_mis4>0:
-            B_shoot4=random.randint(1, A_Shooter4) 
-            num_b_mis4-=1  
-            if shields:
-                if B_shoot4>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                    shields.pop(0)
-            else:  #if red is out of shiels, the shot goes agains the defense value
-                if defense:
-                    if B_shoot4>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                        defense.pop(0)
-                    if not defense:
-                        winner+=1
-                        return("Shooter 4 destroyed Red", len(shields),len(defense))
-            if da(A_Shooter4,B_shoot4):
-                if shields:
-                    if B_shoot4>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                        shields.pop(0)
-                    else:  #if red is out of shiels, the shot goes agains the defense value
-                        if defense:
-                            if B_shoot4>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                                defense.pop(0)
-                        else:
-                            winner+=1
-                            return("Shooter 4 destroyed Red", len(shields),len(defense))
-
-        elif num_b_mis5>0:
-            B_shoot5=random.randint(1, A_Shooter5)  
-            num_b_mis5-=1  
-            if shields:
-                if B_shoot5>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                    shields.pop(0)
-            else:  #if red is out of shiels, the shot goes agains the defense value
-                if defense:
-                    if B_shoot5>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                        defense.pop(0)
-                    if not defense:
-                        winner+=1
-                        return("Shooter 5 destroyed Red", len(shields),len(defense))
-            if da(A_Shooter5,B_shoot5):
-                if shields:
-                    if B_shoot5>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                        shields.pop(0)
-                    else:  #if red is out of shiels, the shot goes agains the defense value
-                        if defense:
-                            if B_shoot5>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                                defense.pop(0)
-                        else:
-                            winner+=1
-                            return("Shooter 5 destroyed Red", len(shields),len(defense))
-
-        elif num_b_mis6>0:
-            B_shoot6=random.randint(1, A_Shooter6)  
-            num_b_mis6-=1 
-            if shields:
-                if B_shoot6>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                    shields.pop(0)
-            else:  #if red is out of shiels, the shot goes agains the defense value
-                if defense:
-                    if B_shoot6>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                        defense.pop(0)
-                    if not defense:
-                        winner+=1
-                        return("Shooter 6 destroyed Red", len(shields),len(defense))
-            if da(A_Shooter6,B_shoot6):
-                if shields:
-                    if B_shoot6>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                        shields.pop(0)
-                    else:  #if red is out of shiels, the shot goes agains the defense value
-                        if defense:
-                            if B_shoot6>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                                defense.pop(0)
-                        else:
-                            winner+=1
-                            return("Shooter 6 destroyed Red", len(shields),len(defense))
-
-        elif num_b_mis7>0:
-            B_shoot7=random.randint(1, A_Shooter7)
-            num_b_mis7-=1  
-            if shields:
-                if B_shoot7>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                    shields.pop(0)
-            else:  #if red is out of shiels, the shot goes agains the defense value
-                if defense:
-                    if B_shoot7>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                        defense.pop(0)
-                    if not defense:
-                        winner+=1
-                        return("Shooter 7 destroyed Red", len(shields),len(defense))
-            if da(A_Shooter7,B_shoot7):
-                if shields:
-                    if B_shoot7>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                        shields.pop(0)
-                    else:  #if red is out of shiels, the shot goes agains the defense value
-                        if defense:
-                            if B_shoot7>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                                defense.pop(0)
-                        else:
-                            winner+=1
-                            return("Shooter 7 destroyed Red", len(shields),len(defense))
-
-        elif num_b_mis8>0:
-            B_shoot8=random.randint(1, A_Shooter8)  
-            num_b_mis8-=1  
-            if shields:
-                if B_shoot8>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                    shields.pop(0)
-            else:  #if red is out of shiels, the shot goes agains the defense value
-                if defense:
-                    if B_shoot8>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                        defense.pop(0)
-                    if not defense:
-                        winner+=1
-                        return("Shooter 8 destroyed Red", len(shields),len(defense))
-            if da(A_Shooter8,B_shoot8):
-                if shields:
-                    if B_shoot8>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                        shields.pop(0)
-                    else:  #if red is out of shiels, the shot goes agains the defense value
-                        if defense:
-                            if B_shoot8>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                                defense.pop(0)
-                        else:
-                            winner+=1
-                            return("Shooter 8 destroyed Red", len(shields),len(defense))
-
-        elif num_b_mis9>0:
-            B_shoot9=random.randint(1, A_Shooter9) 
-            num_b_mis9-=1  
-            if shields:
-                if B_shoot9>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                    shields.pop(0)
-            else:  #if red is out of shiels, the shot goes agains the defense value
-                if defense:
-                    if B_shoot9>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                        defense.pop(0)
-                    if not defense:
-                        winner+=1
-                        return("Shooter 9 destroyed Red", len(shields),len(defense))
-            if da(A_Shooter9,B_shoot9):
-                if shields:
-                    if B_shoot9>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                        shields.pop(0)
-                    else:  #if red is out of shiels, the shot goes agains the defense value
-                        if defense:
-                            if B_shoot9>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                                defense.pop(0)
-                        else:
-                            winner+=1
-                            return("Shooter 9 destroyed Red", len(shields),len(defense))
-
-        elif num_b_mis10>0:
-            B_shoot10=random.randint(1, A_Shooter10) 
-            num_b_mis10-=1 
-            if shields:
-                if B_shoot10>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                    shields.pop(0)
-            else:  #if red is out of shiels, the shot goes agains the defense value
-                if defense:
-                    if B_shoot10>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                        defense.pop(0)
-                    if not defense:
-                        winner+=1
-                        return("Shooter 10 destroyed Red", len(shields),len(defense))
-            if da(A_Shooter10,B_shoot10):
-                if shields:
-                    if B_shoot10>=shields[0]:  #if shot value is greater than shield value, number of shields decreases by one
-                        shields.pop(0)
-                    else:  #if red is out of shiels, the shot goes agains the defense value
-                        if defense:
-                            if B_shoot10>=defense[0]:  #if the shot value is greater than the defense value, the target is destroyed
-                                defense.pop(0)
-                        else:
-                            winner+=1
-                            return("Shooter 10 destroyed Red", len(shields),len(defense))
-
-
-        else: #if all shooters are out of shots the traget survives
+                    if [x for x in shots if x>= shields[0]]:
+                        shots.pop(shots.index(min([x for x in shots if x>= shields[0]])))
+                        shields.pop(0) 
+                if not shields:
+                    if steps:
+                        if [x for x in shots if x>= steps[0]]:
+                            shots.pop(shots.index(min([x for x in shots if x>= steps[0]])))
+                            steps.pop(0)
+        if shields:
             winner+=1
-            return("Out of shots", len(shields),len(defense))   
+            return("Red Wins", len(shields), len(steps))
+        elif steps:
+            winner+=1
+            return("Red Wins", len(shields), len(steps))
+        else:
+            winner+=1
+            return("Blue Wins", len(shields), len(steps))
         
 ######SIMULATION TRIALS##########
 n=10000
@@ -300,74 +47,65 @@ st.title("Shot Simulator")
 st.write("Attacker Information")
 # Create a dropdown
 selected_shooters = st.selectbox("Enter number of Shooters", [1,2,3,4,5,6,7,8,9,10])        
-n_shooters = selected_shooters        
+n_shooters = selected_shooters  
+Attack=[]
 if n_shooters>=1:
     A_Shooter1=st.selectbox("Enter shooter 1's Attack Value", dice)
     S_Shooter1=st.number_input('Enter number of shots for Shooter 1',value=0,min_value=0, step=1)
-else:
-    A_Shooter1=1
-    S_Shooter1=0
+    Attack=Attack+[A_Shooter1]*S_Shooter1
+
 if n_shooters>=2:
     A_Shooter2=st.selectbox("Enter shooter 2's Attack Value", dice)
     S_Shooter2=st.number_input('Enter number of shots for Shooter 2',value=0,min_value=0, step=1)
-else:
-    A_Shooter2=1
-    S_Shooter2=0
+    Attack=Attack+[A_Shooter2]*S_Shooter2
+
 if n_shooters>=3:
     A_Shooter3=st.selectbox("Enter shooter 3's Attack Value", dice)
     S_Shooter3=st.number_input('Enter number of shots for Shooter 3',value=0,min_value=0, step=1)
-else:
-    A_Shooter3=1
-    S_Shooter3=0
+    Attack=Attack+[A_Shooter3]*S_Shooter3
+
 if n_shooters>=4:
     A_Shooter4=st.selectbox("Enter shooter 4's Attack Value", dice)
     S_Shooter4=st.number_input('Enter number of shots for Shooter 4',value=0,min_value=0, step=1)
-else:
-    A_Shooter4=1
-    S_Shooter4=0
+    Attack=Attack+[A_Shooter4]*S_Shooter4
+
 if n_shooters>=5:
     A_Shooter5=st.selectbox("Enter shooter 5's Attack Value", dice)
     S_Shooter5=st.number_input('Enter number of shots for Shooter 5',value=0,min_value=0, step=1)
-else:
-    A_Shooter5=1
-    S_Shooter5=0
+    Attack=Attack+[A_Shooter5]*S_Shooter5
+
 if n_shooters>=6:
     A_Shooter6=st.selectbox("Enter shooter 6's Attack Value", dice)
     S_Shooter6=st.number_input('Enter number of shots for Shooter 6',value=0,min_value=0, step=1)
-else:
-    A_Shooter6=1
-    S_Shooter6=0
+    Attack=Attack+[A_Shooter6]*S_Shooter6
+
 if n_shooters>=7:
     A_Shooter7=st.selectbox("Enter shooter 7's Attack Value", dice)
     S_Shooter7=st.number_input('Enter number of shots for Shooter 7',value=0,min_value=0, step=1)
-else:
-    A_Shooter7=1
-    S_Shooter7=0
+    Attack=Attack+[A_Shooter7]*S_Shooter7
+
 if n_shooters>=8:
     A_Shooter8=st.selectbox("Enter shooter 8's Attack Value", dice)
     S_Shooter8=st.number_input('Enter number of shots for Shooter 8',value=0,min_value=0, step=1)
-else:
-    A_Shooter8=1
-    S_Shooter8=0
+    Attack=Attack+[A_Shooter8]*S_Shooter8
+
 if n_shooters>=9:
     A_Shooter9=st.selectbox("Enter shooter 9's Attack Value", dice)
     S_Shooter9=st.number_input('Enter number of shots for Shooter 9',value=0,min_value=0, step=1)
-else:
-    A_Shooter9=1
-    S_Shooter9=0
+    Attack=Attack+[A_Shooter9]*S_Shooter9
+
 if n_shooters>=10:
     A_Shooter10=st.selectbox("Enter shooter 10's Attack Value", dice)
     S_Shooter10=st.number_input('Enter number of shots for Shooter 10',value=0,min_value=0, step=1)
-else:
-    A_Shooter10=1
-    S_Shooter10=0
+    Attack=Attack+[A_Shooter10]*S_Shooter10
+
 
 st.write("Defender Information") 
 N_Shields=st.number_input("Enter number of defender’s shields",value=0,min_value=0, step=1)       
 S_Shields=st.number_input("Enter strength of defender’s shields",value=0,min_value=0, step=1)  
-Defense_step=st.number_input("Enter the number of defender's deffesnive steps including suppression",value=1,min_value=1, step=1)
-Defense_val=st.selectbox("Enter defender’s defense value",dice)
-Defense=[Defense_val]*Defense_step
+Defense_step=st.number_input("Enter the number of defender's steps",value=1,min_value=1, step=1)
+Defense_val=st.number_input("Enter defender’s defense value",value=0,min_value=0, step=1)
+Defense=sorted([Defense_val]*Defense_step)
 
 st.write("Cooperative Defender Information") 
 CD=st.selectbox("Enter number of units are providing cooperative defense", [0,1,2,3,4,5,6,7,8,9,10])
@@ -416,106 +154,28 @@ if CD>=10:
 
 Blue_Wins=0
 Red_Wins=0
-Blue1_Wins=0
-Blue2_Wins=0
-Blue3_Wins=0
-Blue4_Wins=0
-Blue5_Wins=0
-Blue6_Wins=0
-Blue7_Wins=0
-Blue8_Wins=0
-Blue9_Wins=0
-Blue10_Wins=0
 smain=[]
 dmain=[]
 for i in range(n):
-    sim, s, d= SHOT_SIM(A_Shooter1,S_Shooter1,
-             A_Shooter2,S_Shooter2,
-             A_Shooter3,S_Shooter3,
-             A_Shooter4,S_Shooter4,
-             A_Shooter5,S_Shooter5,
-             A_Shooter6,S_Shooter6,
-             A_Shooter7,S_Shooter7,
-             A_Shooter8,S_Shooter8,
-             A_Shooter9,S_Shooter9,
-             A_Shooter10,S_Shooter10,
+    d=[]
+    dt=[]
+    for i in range(len(Attack)):
+        d.append(random.randint(1, Attack[i]))
+        if da(d[i],Attack[i]):
+            dt.append(Attack[i])
+    Dice=d+dt
+    sim, s, d= SHOT_SIM(Dice,
              Shields,Defense)
-    if sim=="Shooter 1 destroyed Red":
-        Blue_Wins+=1
-        Blue1_Wins+=1
-        smain.append(s)
-        dmain.append(d)
-    if sim=="Shooter 2 destroyed Red":
-        Blue_Wins+=1
-        Blue2_Wins+=1
-        smain.append(s)
-        dmain.append(d)
-    if sim=="Shooter 3 destroyed Red":
-        Blue_Wins+=1
-        Blue3_Wins+=1
-        smain.append(s)
-        dmain.append(d)
-    if sim=="Shooter 4 destroyed Red":
-        Blue_Wins+=1
-        Blue4_Wins+=1
-        smain.append(s)
-        dmain.append(d)
-    if sim=="Shooter 5 destroyed Red":
-        Blue_Wins+=1
-        Blue5_Wins+=1
-        smain.append(s)
-        dmain.append(d)
-    if sim=="Shooter 6 destroyed Red":
-        Blue_Wins+=1
-        Blue6_Wins+=1
-        smain.append(s)
-        dmain.append(d)
-    if sim=="Shooter 7 destroyed Red":
-        Blue_Wins+=1
-        Blue7_Wins+=1
-        smain.append(s)
-        dmain.append(d)
-    if sim=="Shooter 8 destroyed Red":
-        Blue_Wins+=1
-        Blue8_Wins+=1
-        smain.append(s)
-        dmain.append(d)
-    if sim=="Shooter 9 destroyed Red":
-        Blue_Wins+=1
-        Blue9_Wins+=1
-        smain.append(s)
-        dmain.append(d)
-    if sim=="Shooter 10 destroyed Red":
-        Blue_Wins+=1
-        Blue10_Wins+=1
-        smain.append(s)
-        dmain.append(d)
-    if sim=="Out of shots":
+    if sim=="Red Wins":
         Red_Wins+=1
         smain.append(s)
         dmain.append(d)
+    if sim=="Blue Wins":
+        Blue_Wins+=1
+        smain.append(s)
+        dmain.append(d)
 
-st.write("Blue's Win Percent:", round(100*Blue_Wins/n))
-if n_shooters>=1:
-    st.write("Percent of iterations that shooter 1 destroyed red:", round(100*Blue1_Wins/n))
-if n_shooters>=2:    
-    st.write("Percent of iterations that shooter 2 destroyed red:", round(100*Blue2_Wins/n))
-if n_shooters>=3:    
-    st.write("Percent of iterations that shooter 3 destroyed red:", round(100*Blue3_Wins/n))
-if n_shooters>=4:    
-    st.write("Percent of iterations that shooter 4 destroyed red:", round(100*Blue4_Wins/n))
-if n_shooters>=5:    
-    st.write("Percent of iterations that shooter 5 destroyed red:", round(100*Blue5_Wins/n))
-if n_shooters>=6:    
-    st.write("Percent of iterations that shooter 6 destroyed red:", round(100*Blue6_Wins/n))
-if n_shooters>=7:    
-    st.write("Percent of iterations that shooter 7 destroyed red:", round(100*Blue7_Wins/n))
-if n_shooters>=8:    
-    st.write("Percent of iterations that shooter 8 destroyed red:", round(100*Blue8_Wins/n))
-if n_shooters>=9:    
-    st.write("Percent of iterations that shooter 9 destroyed red:", round(100*Blue9_Wins/n))
-if n_shooters>=10:    
-    st.write("Percent of iterations that shooter 10 destroyed red:", round(100*Blue10_Wins/n))
+st.write("Chance to destroy target:  ", round(100*Blue_Wins/n),"%")
 
 fig = px.histogram(smain, histnorm='percent')
 fig.update_xaxes(title_text='Shields Remaining')
@@ -544,6 +204,4 @@ fig.update_layout(
         
         # Adjust the font size as needed
     }, showlegend=False, hovermode=False,title_x=0.5)
-
 st.plotly_chart(fig)
-
