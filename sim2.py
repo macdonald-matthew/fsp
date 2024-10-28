@@ -112,43 +112,43 @@ CD=st.selectbox("Enter number of units are providing cooperative defense", [0,1,
 Shields=[S_Shields]*N_Shields
 
 if CD>=1:
-    D1N=st.number_input("Enter number of shields from first coopeartive defender",value=0,min_value=0, step=1)
+    D1N=st.number_input("Enter number of shields from first cooperative defender",value=0,min_value=0, step=1)
     D1=st.number_input("Enter first cooperative defender's shield value",value=0,min_value=0, step=1)
     Shields=sorted(Shields+[D1]*D1N)
 if CD>=2:
-    D2N=st.number_input("Enter number of shields from second coopeartive defender",value=0,min_value=0, step=1)
+    D2N=st.number_input("Enter number of shields from second cooperative defender",value=0,min_value=0, step=1)
     D2=st.number_input("Enter second cooperative defender's shield value",value=0,min_value=0, step=1)
     Shields=sorted(Shields+[D2]*D2N)
 if CD>=3:
-    D3N=st.number_input("Enter number of shields from third coopeartive defender",value=0,min_value=0, step=1)
+    D3N=st.number_input("Enter number of shields from third cooperative defender",value=0,min_value=0, step=1)
     D3=st.number_input("Enter third cooperative defender's shield value",value=0,min_value=0, step=1)
     Shields=sorted(Shields+[D3]*D3N)
 if CD>=4:
-    D4N=st.number_input("Enter number of shields from fourth coopeartive defender",value=0,min_value=0, step=1)
+    D4N=st.number_input("Enter number of shields from fourth cooperative defender",value=0,min_value=0, step=1)
     D4=st.number_input("Enter fourth cooperative defender's shield value",value=0,min_value=0, step=1)
     Shields=sorted(Shields+[D4]*D4N)
 if CD>=5:
-    D5N=st.number_input("Enter number of shields from fifth coopeartive defender",value=0,min_value=0, step=1)
+    D5N=st.number_input("Enter number of shields from fifth cooperative defender",value=0,min_value=0, step=1)
     D5=st.number_input("Enter fifth cooperative defender's shield value",value=0,min_value=0, step=1)
     Shields=sorted(Shields+[D5]*D5N)
 if CD>=6:
-    D6N=st.number_input("Enter number of shields from sixth coopeartive defender",value=0,min_value=0, step=1)
+    D6N=st.number_input("Enter number of shields from sixth cooperative defender",value=0,min_value=0, step=1)
     D6=st.number_input("Enter sixth cooperative defender's shield value",value=0,min_value=0, step=1)
     Shields=sorted(Shields+[D6]*D6N)
 if CD>=7:
-    D7N=st.number_input("Enter number of shields from seventh coopeartive defender",value=0,min_value=0, step=1)
+    D7N=st.number_input("Enter number of shields from seventh cooperative defender",value=0,min_value=0, step=1)
     D7=st.number_input("Enter seventh cooperative defender's shield value",value=0,min_value=0, step=1)
     Shields=sorted(Shields+[D7]*D7N)
 if CD>=8:
-    D8N=st.number_input("Enter number of shields from eigth coopeartive defender",value=0,min_value=0, step=1)
+    D8N=st.number_input("Enter number of shields from eigth cooperative defender",value=0,min_value=0, step=1)
     D8=st.number_input("Enter eigth cooperative defender's shield value",value=0,min_value=0, step=1)
     Shields=sorted(Shields+[D8]*D8N)
 if CD>=9:
-    D9N=st.number_input("Enter number of shields from ninth coopeartive defender",value=0,min_value=0, step=1)
+    D9N=st.number_input("Enter number of shields from ninth cooperative defender",value=0,min_value=0, step=1)
     D9=st.number_input("Enter ninth cooperative defender's shield value",value=0,min_value=0, step=1)
     Shields=sorted(Shields+[D9]*D9N)
 if CD>=10:
-    D10N=st.number_input("Enter number of shields from tenth coopeartive defender",value=0,min_value=0, step=1)
+    D10N=st.number_input("Enter number of shields from tenth cooperative defender",value=0,min_value=0, step=1)
     D10=st.number_input("Enter tenth cooperative defender's shield value",value=0,min_value=0, step=1)
     Shields=sorted(Shields+[D10]*D10N)
 
@@ -193,7 +193,7 @@ fig.update_layout(
 st.plotly_chart(fig)
 
 fig = px.histogram(dmain, histnorm='percent')
-fig.update_xaxes(title_text='Deffesnive Steps Remaining')
+fig.update_xaxes(title_text='Defensive Steps Remaining')
 fig.update_yaxes(title_text='Percent Observed')
 
 fig.update_layout(
